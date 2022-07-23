@@ -1,0 +1,336 @@
+*,
+*:before,
+*:after{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    height: 100vh;
+    background: linear-gradient(
+        135deg,
+        #ee579d,
+        #d161ff
+    );
+}
+.container{
+    width: 40%;
+    min-width: 450px;
+    position: relative;
+    transform: translate(-50%,-350%);
+    top: 50%;
+    left: 50%;
+    padding: 30px 40px;
+}
+.inputs{
+    width: 40%;
+    min-width: 450px;
+    position: relative;
+    transform: translate(-50%,-40%);
+    top: 46%;
+    left: 50%;
+    padding: 30px 40px;
+}
+#bg{
+    height: 300px;
+    position: relative;
+    background-color: #55350c;
+    padding: 30px 20px;
+    border-radius: 5px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+}
+.Clear{
+    width: 10%;
+    min-width: 150px;
+    position: absolute;
+    transform: translate(73%,-176%);
+    top: 50%;
+    left: 50%;
+    padding: 30px 40px;
+}   
+#del button{
+    position: relative;
+    float: right;
+    width: 150%;
+    height: 48px;
+    border-radius: 5px;
+    font-family: 'Poppins',sans-serif;
+    font-weight: 500;
+    font-size: 32px;
+    background-color: #1bb661;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    outline: none;
+}
+#calc{
+    position: relative;
+    background-color: #ffffff;
+    padding: 30px 20px;
+    border-radius: 5px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+}
+#calc input{
+    width: 70%;
+    width: 70%;
+    height: 45px;
+    font-family: 'Poppins',sans-serif;
+    font-size: 15px;
+    border: 2px solid #d1d3d4;
+    padding: 12px;
+    color: #111111;
+    font-weight: 500;
+    position: relative;
+    border-radius: 5px;
+}
+#calc input:focus{
+    outline: none;
+    border-color: #8052ec;
+}
+
+#add button{
+    position: relative;
+    float: right;
+    width: 20%;
+    height: 80px;
+    border-radius: 5px;
+    font-family: 'Poppins',sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    background-color: #8052ec;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    outline: none;
+}
+#four button{
+    position: relative;
+    float: right;
+    width: 20%;
+    height: 80px;
+    border-radius: 5px;
+    font-family: 'Poppins',sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    background-color: #8052ec;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    outline: none;
+}
+#three button{
+    position: relative;
+    float: right;
+    width: 20%;
+    height: 80px;
+    border-radius: 5px;
+    font-family: 'Poppins',sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    background-color: #8052ec;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    outline: none;
+}
+#two button{
+    position: relative;
+    float: right;
+    width: 20%;
+    height: 80px;
+    border-radius: 5px;
+    font-family: 'Poppins',sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    background-color: #8052ec;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    outline: none;
+}
+#one button{
+    position: relative;
+    float: right;
+    width: 20%;
+    height: 80px;
+    border-radius: 5px;
+    font-family: 'Poppins',sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    background-color: #8052ec;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    outline: none;
+}
+#subtract button{
+    position: relative;
+    float: right;
+    width: 20%;
+    height: 80px;
+    border-radius: 5px;
+    font-family: 'Poppins',sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    background-color: #8052ec;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    outline: none;
+}
+#eight button{
+    position: relative;
+    float: right;
+    width: 20%;
+    height: 80px;
+    border-radius: 5px;
+    font-family: 'Poppins',sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    background-color: #8052ec;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    outline: none;
+}
+#seven button{
+    position: relative;
+    float: right;
+    width: 20%;
+    height: 80px;
+    border-radius: 5px;
+    font-family: 'Poppins',sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    background-color: #8052ec;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    outline: none;
+}
+#six button{
+    position: relative;
+    float: right;
+    width: 20%;
+    height: 80px;
+    border-radius: 5px;
+    font-family: 'Poppins',sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    background-color: #8052ec;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    outline: none;
+}
+#five button{
+    position: relative;
+    float: right;
+    width: 20%;
+    height: 80px;
+    border-radius: 5px;
+    font-family: 'Poppins',sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    background-color: #8052ec;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    outline: none;
+}
+
+#multiply button{
+    position: relative;
+    float: right;
+    width: 20%;
+    height: 80px;
+    border-radius: 5px;
+    font-family: 'Poppins',sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    background-color: #8052ec;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    outline: none;
+}
+
+#zero button{
+    position: relative;
+    float: right;
+    width: 20%;
+    height: 80px;
+    border-radius: 5px;
+    font-family: 'Poppins',sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    background-color: #8052ec;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    outline: none;
+}
+#nine button{
+    position: relative;
+    float: right;
+    width: 20%;
+    height: 80px;
+    border-radius: 5px;
+    font-family: 'Poppins',sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    background-color: #8052ec;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    outline: none;
+}
+#decimal button{
+    position: relative;
+    float: right;
+    width: 20%;
+    height: 80px;
+    border-radius: 5px;
+    font-family: 'Poppins',sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    background-color: #8052ec;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    outline: none;
+}
+#divide button{
+    position: relative;
+    float: right;
+    width: 20%;
+    height: 80px;
+    border-radius: 5px;
+    font-family: 'Poppins',sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    background-color: #8052ec;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    outline: none;
+}
+
+#equals button{
+    position: relative;
+    float: right;
+    width: 40%;
+    height: 64px;
+    border-radius: 5px;
+    font-family: 'Poppins',sans-serif;
+    font-weight: 500;
+    font-size: 32px;
+    background-color: #1bb661;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    outline: none;
+}
+
+
+
