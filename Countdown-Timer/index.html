@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown Timer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="watch">
+        <div class="time">
+            <span id="hour">00</span>:<span id="minute">00</span>:<span id="second">00</span>
+        </div>
+        <div class="controls">
+            <button id="start">Start</button>
+            <button id="stop">Stop</button>
+            <button id="reset">Reset</button>
+        </div>
+        <div class="slidecontainer">
+            <input type="range" min="0" max="59" value="0" class="slider1" id="h">
+
+            <input type="range" min="0" max="59" value="0" class="slider2" id="m"
+            oninput="document.getElementById('minute').innerText = this.value">
+
+            <input type="range" min="0" max="59" value="0" class="slider3" id="s"
+            oninput="document.getElementById('second').innerText = this.value">
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
