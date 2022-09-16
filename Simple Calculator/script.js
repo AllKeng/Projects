@@ -21,65 +21,33 @@ function calculate() {
     document.getElementsByName('Input')[0].value = q;
 }
 
+
+function btns(sign, addition) {
+    document.querySelector(sign).onclick = function(){
+        document.getElementsByName('Input')[0].value +=
+        addition;
+        document.getElementById('=').focus();
+    }
+}
+
+btns('#decimal','.');
+btns('#multiply','*');
+btns('#one','1');
+btns('#two','2');
+btns('#three','3');
+btns('#four','4');
+btns('#five','5');
+btns('#six','6');
+btns('#seven','7');
+btns('#eight','8');
+btns('#nine','9');
+btns('#zero','0');
+btns('#divide','/');
+btns('#add','+');
+btns('#subtract','-');
+
 document.querySelector('#del').onclick = function() {
     document.getElementsByName('Input')[0].value = "";
-    document.getElementById('=').focus();
-}
-document.querySelector('#multiply').onclick = function(){
-    document.getElementsByName('Input')[0].value += '*';
-    document.getElementById('=').focus();
-}
-document.querySelector('#one').onclick = function(){
-    document.getElementsByName('Input')[0].value += '1';
-    document.getElementById('=').focus();
-}
-document.querySelector('#two').onclick = function(){
-    document.getElementsByName('Input')[0].value += '2';
-    document.getElementById('=').focus();
-}
-document.querySelector('#three').onclick = function(){
-    document.getElementsByName('Input')[0].value += '3';
-    document.getElementById('=').focus();
-}
-document.querySelector('#four').onclick = function(){
-    document.getElementsByName('Input')[0].value += '4';
-    document.getElementById('=').focus();
-}
-document.querySelector('#five').onclick = function(){
-    document.getElementsByName('Input')[0].value += '5';
-    document.getElementById('=').focus();
-}
-document.querySelector('#six').onclick = function(){
-    document.getElementsByName('Input')[0].value += '6';
-    document.getElementById('=').focus();
-}
-document.querySelector('#seven').onclick = function(){
-    document.getElementsByName('Input')[0].value += '7';
-    document.getElementById('=').focus();
-}
-document.querySelector('#eight').onclick = function(){
-    document.getElementsByName('Input')[0].value += '8';
-    document.getElementById('=').focus();
-}
-document.querySelector('#nine').onclick = function(){
-    document.getElementsByName('Input')[0].value += '9';
-    document.getElementById('=').focus();
-}
-document.querySelector('#zero').onclick = function(){
-    document.getElementsByName('Input')[0].value += '0';
-    document.getElementById('=').focus();
-}
-document.querySelector('#divide').onclick = function(){
-    document.getElementsByName('Input')[0].value += '/';
-    document.getElementById('=').focus();
-}
-document.querySelector('#add').onclick = function(){
-    document.getElementsByName('Input')[0].value += '+';
-    document.getElementById('=').focus();
-    
-}
-document.querySelector('#subtract').onclick = function(){
-    document.getElementsByName('Input')[0].value += '-';
     document.getElementById('=').focus();
 }
 document.querySelector('#equals').onclick = function() {
