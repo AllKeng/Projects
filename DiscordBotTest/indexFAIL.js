@@ -109,4 +109,4 @@ client.on("messageCreate", (message) => {
 
 // General ID: 1040430088782610484
 
-client.login("MTA0MDQzMDE0MTk0NTQyMTgyNQ.GUhUng.nRB7kC9yvMuxS6J48DQnraSuIsecrWa8O5rk_Q");
+client.login("");
