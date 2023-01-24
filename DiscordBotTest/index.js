@@ -40,7 +40,7 @@ client.on('messageCreate', async message => {
     switch(args[0].toLowerCase()){
         //////////////////////////////////////////////////////////////////////////
         case 'help': 
-        // Did not automate because I am lazy. 
+        // Lists the commands available. 
         const queueEmbed = new EmbedBuilder()
             .setColor(0x0099FF)
             .setTitle(`**__Command List__**`)
