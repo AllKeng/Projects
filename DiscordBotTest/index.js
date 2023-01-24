@@ -1,5 +1,5 @@
 /**
- * Created by AetherHatred89 ( Aether89#4791 )
+ * Created by Allen Keng
  * npm install init (COVERS ALL OF THIS)
  * npm install node-fetch@2
  * npm install discordaudio
