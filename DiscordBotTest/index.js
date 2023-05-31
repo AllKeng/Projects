@@ -31,16 +31,14 @@ client.once('ready', () => {
 
 client.on('messageCreate', async message => {
     if(message.author.bot || message.channel.type === discord.ChannelType.DM) return;
-    
     if(!message.content.startsWith(config.prefix)) return;
     
     let args = message.content.substring(config.prefix.length).split(" ");
-    
+
     const uvc = message.member.voice.channel;
     switch(args[0].toLowerCase()){
         //////////////////////////////////////////////////////////////////////////
         case 'help': 
-        // Lists the commands available. 
         const queueEmbed = new EmbedBuilder()
             .setColor(0x0099FF)
             .setTitle(`**__Command List__**`)
@@ -109,6 +107,11 @@ client.on('messageCreate', async message => {
             break;
         //////////////////////////////////////////////////////////////////////////
         case 'spam':
+	    let ran = Math.random()*10;
+	    let bool = 0;
+	    if(ran > 9) {
+		bool = 1;
+	    }
             let numTimes = 3;
             const taggedUser = message.mentions.users;
             if(!args[1] || taggedUser.length < 1) {
@@ -116,16 +119,24 @@ client.on('messageCreate', async message => {
                 return;
             }
             if(isNumber(args[args.length-1]) === true) { // checks if last element is a number
-                numTimes = Math.min(args[args.length-1],10); // caps at 10 mentions
+                numTimes = Math.min(args[args.length-1],Math.random()*(15-10+1)+10); // caps at 16 mentions
             }
+	    if(bool >= 1) {
+	        numTimes = 20;
+	    }
             let msg = "";
             taggedUser.each( tagged => {
                 msg += `<@${tagged.id}> `
             })
+            
             //  console.log(msg + numTimes);
             for(i = 0; i < numTimes; i++) {
                 message.channel.send(msg);
             }
+            if(bool >= 1) {
+                message.reply("10% chance of the max : 20");
+            }
+            message.reply("Count: " + Math.ceil(numTimes));
             break;
         //////////////////////////////////////////////////////////////////////////
         case 'save': {
@@ -241,9 +252,67 @@ client.on('messageCreate', async message => {
             catch(err) { return message.channel.send({content: `There is currently nothing playing!`}); }
             break;
         //////////////////////////////////////////////////////////////////////////
+        case 'status':
+            //if(!args[1]) return message.channel.send({content: `Please provide url`});
+            //console.log("RAN!");
+            checkFriend(message);
+            break;
+        //////////////////////////////////////////////////////////////////////////////////////////////////
+        case 'mastery':
+            if(!args[1] || !args[2]) return message.channel.send({content: `Follow the format \`>mastery <username> <champion name>\``});
+            let champName = args[2].charAt(0).toUpperCase() + args[2].slice(1);
+            (async(url) => {
+                var buf = await httpGet(url);
+                var filtered = buf.toString('utf-8');
+                let idxStart = filtered.indexOf("</script></div><div id=\"container\">");
+                var printed = filtered.substring(idxStart);
+
+                const mastery = "</a></td><td>";
+                const tokens = "data-tooltip=\"tooltip\" title=\"";
+                const markerEnd = ">";
+                // Finding specific data for name 
+                let idxChamp = filtered.indexOf(`${champName}</a></td><td>`); // + 18
+                let champStart = filtered.substring(idxChamp);
+                let champMastery = champStart.substring( champStart.indexOf(mastery) + mastery.length );
+                let sTokens = champStart.substring( champStart.indexOf(tokens) + tokens.length);
+                sTokens = sTokens.substring(0,sTokens.indexOf(markerEnd)-1);
+                
+                message.channel.send(`${args[1]}'s ${champName} is currently at mastery ${champMastery.at(0)} with ${sTokens}`);
+                
+                //console.log(printed);
+              })(`https://championmastery.gg/summoner?summoner=${args[1]}&region=NA&lang=en_US`);
+        //////////////////////////////////////////////////////////////////////////////////////////////////
         }
     }
 );
+
+function checkFriend(message){
+    (async(url) => {
+        var buf = await httpGet(url);
+        var filtered = buf.toString('utf-8');
+        let idxStart = filtered.indexOf("</script></div><div id=\"container\">");
+        var printed = filtered.substring(idxStart);
+
+        const mastery = "</a></td><td>";
+        const tokens = "/3 tokens\">";
+        // Finding specific data for Friend 
+        let idxSylas = filtered.indexOf("Sylas</a></td><td>"); // + 18
+        let sylasStart = filtered.substring(idxSylas);
+        let sylasMastery = sylasStart.substring( sylasStart.indexOf(mastery) + mastery.length );
+        let sTokens = sylasStart.substring( sylasStart.indexOf(tokens) - 1 );
+        
+        let idxKayn = filtered.indexOf("Kayn</a></td><td>"); // + 17
+        let kaynStart = filtered.substring(idxKayn);
+        let kaynMastery = kaynStart.substring( kaynStart.indexOf(mastery) + mastery.length );
+        let kTokens = kaynStart.substring( kaynStart.indexOf(tokens) - 1 );
+        
+        message.channel.send(`Friend's Sylas is currently at mastery ${sylasMastery.at(0)} with ${sTokens.at(0)}/3 tokens`);
+        message.channel.send(`Friend's Kayn is currently at mastery ${kaynMastery.at(0)} with ${kTokens.at(0)}/3 tokens`);
+        
+
+        //console.log(printed);
+      })('https://championmastery.gg/summoner?summoner=<Friend>&region=NA&lang=en_US');
+}
 
 /**
  * This function plays the given file name in the voice channel that the author of the message
@@ -289,5 +358,35 @@ function isNumber(value) {
         return false;
     }
 }
+
+function httpGet(url) {
+    return new Promise((resolve, reject) => {
+      const http = require('http'),
+        https = require('https');
+  
+      let client = http;
+  
+      if (url.toString().indexOf("https") === 0) {
+        client = https;
+      }
+  
+      client.get(url, (resp) => {
+        let chunks = [];
+  
+        // A chunk of data has been recieved.
+        resp.on('data', (chunk) => {
+          chunks.push(chunk);
+        });
+  
+        // The whole response has been received. Print out the result.
+        resp.on('end', () => {
+          resolve(Buffer.concat(chunks));
+        });
+  
+      }).on("error", (err) => {
+        reject(err);
+      });
+    });
+  }
 
 client.login("");
